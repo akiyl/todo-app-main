@@ -6,7 +6,7 @@ import createTodo from "./element";
 import { useState } from "react";
 
 const App = () => {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState([""]);
   console.log(message);
 
   return (
@@ -19,8 +19,6 @@ const App = () => {
           className="form"
           onSubmit={(e) => {
             e.preventDefault();
-            const formData = new FormData(e.target);
-            formData.append("data", message);
           }}
         >
           <label className="form-label" htmlFor="/" For="text">
@@ -28,11 +26,6 @@ const App = () => {
               className="form-input"
               type="text"
               placeholder="Create a new todo...."
-              onSubmit={(e) => {
-                e.preventDefault;
-                document.createElement("li");
-                <createTodo />;
-              }}
               onChange={(e) => {
                 setMessage(e.target.value);
               }}
@@ -42,8 +35,8 @@ const App = () => {
         </form>
         <div className="todo-wrapup">
           <ul className="todo-list">
-            {setMessage.length < 0 &&
-              setMessage.map((data) => (
+            {message.length < 0 &&
+              message.map((data) => (
                 <li key={data} value={data}>
                   {data}
                 </li>
@@ -58,7 +51,12 @@ const App = () => {
           <div className="todo-footer">
             <span className="todo-total"> items left</span>
             <div className="todo-tab">
-              <button className="todo-button-items">All</button>
+              <button
+                className="todo-button-items"
+                onDoubleClick={console.log("this is message", message)}
+              >
+                All
+              </button>
               <button className="todo-button-items">Active</button>
               <button className="todo-button-items">Completed</button>
             </div>
