@@ -9,6 +9,10 @@ const App = () => {
   const [message, setMessage] = useState([""]);
   console.log(message);
   const [clicked, setClicked] = useState(false);
+  const add = () => {
+    localStorage.setItem("data", message);
+    console.log(message);
+  };
   return (
     <div className="app">
       <header className="header"></header>
@@ -19,7 +23,7 @@ const App = () => {
           className="form"
           onSubmit={(e) => {
             e.preventDefault();
-            console.log("message is", message);
+
             setClicked(true);
           }}
         >
@@ -40,11 +44,15 @@ const App = () => {
             <label htmlFor="/">
               <li className="todo-list-item-default"> Enter your todo list</li>
             </label>
+
             {clicked ? (
               <label htmlFor="/">
-                <li className="todo-list-item">{message}</li>
+                <li className="todo-list-item">
+                  {localStorage.getItem("data")}
+                </li>
               </label>
             ) : null}
+
             <label htmlFor="/">
               <li className="todo-list-item"></li>
             </label>
