@@ -22,6 +22,9 @@ const App = () => {
           name="form1"
           className="form"
           onSubmit={(e) => {
+            {
+              add;
+            }
             e.preventDefault();
 
             setClicked(true);
