@@ -6,13 +6,10 @@ import createTodo from "./element";
 import { useState } from "react";
 
 const App = () => {
-  const [message, setMessage] = useState([""]);
-  console.log(message);
+  const [todo, setTodo] = useState([""]);
+  console.log(todo);
   const [clicked, setClicked] = useState(false);
-  const add = () => {
-    localStorage.setItem("data", message);
-    console.log(message);
-  };
+  const todoStorage = JSON.parse(localStorage.getItem("todoStorage")) || [];
   return (
     <div className="app">
       <header className="header"></header>
@@ -22,10 +19,12 @@ const App = () => {
           name="form1"
           className="form"
           onSubmit={(e) => {
-            {
-              add;
-            }
             e.preventDefault();
+            if (todo.id >= 0) {
+              todoStorage.push(todo);
+
+              localStorage.setItem("todoStorage", JSON.stringify(todoStorage));
+            }
 
             setClicked(true);
           }}
@@ -36,9 +35,9 @@ const App = () => {
               type="text"
               placeholder="Create a new todo...."
               onChange={(e) => {
-                setMessage(e.target.value);
+                setTodo(e.target.value);
               }}
-              value={message}
+              value={todo}
             />
           </label>
         </form>
@@ -51,14 +50,10 @@ const App = () => {
             {clicked ? (
               <label htmlFor="/">
                 <li className="todo-list-item">
-                  {localStorage.getItem("data")}
+                  {localStorage.getItem("todo")}
                 </li>
               </label>
             ) : null}
-
-            <label htmlFor="/">
-              <li className="todo-list-item"></li>
-            </label>
           </ul>
           <div className="todo-footer">
             <span className="todo-total"> items left</span>
