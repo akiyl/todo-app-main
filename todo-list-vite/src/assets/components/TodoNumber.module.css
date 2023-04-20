@@ -1,0 +1,44 @@
+.wrapper {
+  background-color: var(--bg-secondary);
+  padding: 0 2rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  user-select: none;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.items-left,
+.clear-completed {
+  color: var(--clr-ternary);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.clear-completed:hover {
+  color: var(--clr-secondary);
+}
+
+.clear-completed {
+  cursor: pointer;
+}
+
+.wrapper > div {
+  margin-top: 0;
+  display: none;
+}
+
+@media screen and (min-width: 545px) {
+  .wrapper > div {
+    display: flex;
+  }
+
+  .items-left,
+  .clear-completed,
+  .wrapper > div > p {
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+}

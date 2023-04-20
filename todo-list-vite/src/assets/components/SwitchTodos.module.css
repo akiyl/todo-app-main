@@ -1,0 +1,39 @@
+.wrapper {
+  background-color: var(--bg-secondary);
+  padding: 0 2rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  user-select: none;
+  border-radius: 0.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.all-todos,
+.active-todos,
+.completed-todos {
+  margin-right: 2rem;
+  color: var(--clr-ternary);
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.wrapper > p:hover {
+  color: var(--clr-secondary);
+}
+
+.active {
+  color: var(--clr-bright-blue);
+}
+
+.wrapper p:last-child {
+  margin: 0;
+}
+
+@media screen and (min-width: 545px) {
+  .wrapper {
+    display: none;
+  }
+}
